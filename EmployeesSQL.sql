@@ -7,20 +7,20 @@ Drop table if exists titles;
 	
 
 Create table titles (
-	title_id VARCHAR PRIMARY KEY NOT NULL,
-	title VARCHAR
+	title_id VARCHAR(5) PRIMARY KEY NOT NULL,
+	title VARCHAR(25	)
 );
 
 Select * from titles
 
 
 Create table employees (
-	emp_no VARCHAR PRIMARY KEY NOT NULL,
-	emp_title VARCHAR NOT NULL,
+	emp_no INT PRIMARY KEY NOT NULL,
+	emp_title VARCHAR(10) NOT NULL,
 	birth_date DATE NOT NULL,
-	first_name VARCHAR NOT NULL,
-	last_name VARCHAR NOT NULL,
-	sex VARCHAR NOT NULL,
+	first_name VARCHAR(35) NOT NULL,
+	last_name VARCHAR(35) NOT NULL,
+	sex VARCHAR(1) NOT NULL,
 	hire_date DATE NOT NULL,
 	FOREIGN KEY (emp_title) REFERENCES titles(title_id)
 );
@@ -29,16 +29,16 @@ SELECT * from employees
 
 
 Create table departments (
-	dept_no VARCHAR PRIMARY KEY NOT NULL,
-	dept_name VARCHAR
+	dept_no VARCHAR(5) PRIMARY KEY NOT NULL,
+	dept_name VARCHAR(25)
 );
 
 Select * from departments
 
 
 Create table dept_manager(
-	dept_no VARCHAR NOT NULL,
-	emp_no VARCHAR NOT NULL,
+	dept_no VARCHAR(5) NOT NULL,
+	emp_no INT NOT NULL,
 	FOREIGN KEY (dept_no) REFERENCES departments(dept_no),
 	FOREIGN KEY (emp_no) REFERENCES employees(emp_no)
 );
@@ -47,8 +47,8 @@ Select * from dept_manager
 
 
 Create table dept_emp(
-	emp_no VARCHAR NOT NULL,
-	dept_no VARCHAR NOT NULL,
+	emp_no INT NOT NULL,
+	dept_no VARCHAR(5) NOT NULL,
 	PRIMARY KEY (emp_no, dept_no),
 	FOREIGN KEY (emp_no) REFERENCES employees(emp_no),
 	FOREIGN KEY (dept_no) REFERENCES departments(dept_no)
@@ -58,8 +58,8 @@ Select * from dept_emp
 
 
 Create table salaries(
-	emp_no VARCHAR PRIMARY KEY NOT NULL,
-	salary INTEGER NOT NULL,
+	emp_no INT PRIMARY KEY NOT NULL,
+	salary INT NOT NULL,
 	FOREIGN KEY (emp_no) REFERENCES employees(emp_no)
 );
 
